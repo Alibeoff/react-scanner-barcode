@@ -22,7 +22,7 @@ export class AuthService {
     const createdUser = await this.usersService.create(createUserDto);
     return {
       access_token: await this.jwtService.signAsync({
-        sub: createdUser.id,
+        id: createdUser.id,
         username: createdUser.name,
       }),
     };
@@ -32,7 +32,7 @@ export class AuthService {
     if (user?.password !== password) {
       throw new UnauthorizedException('Ошибка авторизации!');
     }
-    const payload = { sub: user.id, username: user.name };
+    const payload = { id: user.id, username: user.name };
     return { access_token: await this.jwtService.signAsync(payload) };
   }
   async generateTokens() {

@@ -6,6 +6,6 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - ./packages/server/.env
+      - .env
     environment:
       - PORT=5432
