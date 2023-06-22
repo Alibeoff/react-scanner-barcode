@@ -7,10 +7,11 @@ import { LoginUserDto } from "@/types/login.dto";
 import { notify } from "@/utils/notifications";
 import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ObjectSchema, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 const schema: ObjectSchema<LoginUserDto> = object({
   email: string().email("Проверьте почту!").required("Введите почту!"),
   password: string()
